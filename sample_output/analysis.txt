@@ -1,0 +1,29 @@
+Correlation between number of fires and burnt area, 1980-2024
+
+country   years       r   interpretation
+PRT          45    0.42   weak
+ESP          45    0.18   none
+FRA          45    0.65   moderate
+ITA          45    0.75   moderate
+GRC          45    0.41   weak
+
+Years where fires FELL but burnt area ROSE (>5% / >30%, since 2005)
+
+  PRT 2009->2010:  fires  -12.3%   area    +53.0%   (92,126 -> 140,953 ha)
+  PRT 2011->2012:  fires  -14.9%   area    +53.0%   (77,104 -> 117,985 ha)
+  PRT 2012->2013:  fires   -8.8%   area    +35.9%   (117,985 -> 160,388 ha)
+  PRT 2015->2016:  fires  -18.0%   area   +149.7%   (67,200 -> 167,808 ha)
+  PRT 2019->2020:  fires  -11.2%   area    +59.6%   (42,085 -> 67,170 ha)
+  PRT 2023->2024:  fires  -16.9%   area   +298.9%   (34,510 -> 137,651 ha)
+  GRC 2005->2006:  fires   -8.2%   area    +96.7%   (6,437 -> 12,661 ha)
+
+Largest single-country seasons on record
+
+  PRT 2017:   539,921 ha in 21,006 fires
+  ESP 1985:   484,476 ha in 12,238 fires
+  PRT 2003:   471,750 ha in 28,087 fires
+  ESP 1994:   437,635 ha in 19,263 fires
+  ESP 1989:   426,693 ha in 20,811 fires
+  PRT 2005:   346,718 ha in 41,689 fires
+  ESP 1981:   298,288 ha in 10,878 fires
+  ESP 2022:   267,947 ha in 10,507 fires

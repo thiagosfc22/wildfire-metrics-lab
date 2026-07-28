@@ -1,0 +1,34 @@
+DATA ATTRIBUTION
+================
+
+The wildfire statistics in data/ are derived from the European Forest Fire
+Information System (EFFIS), part of the Copernicus Emergency Management Service,
+operated by the European Commission's Joint Research Centre (JRC).
+
+  Source file: report_2024.xlsx
+  Source page: https://forest-fire.emergency.copernicus.eu/applications/data-and-services
+  Licence:     Creative Commons Attribution 4.0 International (CC BY 4.0)
+               https://forest-fire.emergency.copernicus.eu/about-effis/data-license
+  Retrieved:   2026-07-28
+  Coverage:    1980-2024, 31 countries
+
+  © European Union, 1995-2026
+
+CC BY 4.0 requires that changes be indicated. The following changes were made to
+the source data by fetch_effis.py; no values were altered:
+
+  1. The two worksheets were extracted to separate CSV files
+     ("Burnt area (ha) 1980 - 2024" -> effis_burnt_area_ha.csv,
+      "Nr. of forest fires 1980 - 2024" -> effis_number_of_fires.csv).
+  2. Thousands separators, written in the source as non-breaking spaces
+     (U+00A0), were removed so the values parse as numbers.
+  3. Spreadsheet formatting, merged cells and styling were dropped; only cell
+     values were kept.
+
+Known limitation carried over from the source: EFFIS burnt-area mapping detects
+fires of approximately 30 hectares or larger. Smaller fires are not represented
+in the burnt-area figures.
+
+The analysis, chart and all code in this repository are the author's own and are
+not endorsed by or affiliated with EFFIS, Copernicus, the JRC or the European
+Commission.

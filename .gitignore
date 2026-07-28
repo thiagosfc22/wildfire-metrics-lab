@@ -1,0 +1,5 @@
+.build/
+data/report_2024.xlsx
+__pycache__/
+*.pyc
+.DS_Store
