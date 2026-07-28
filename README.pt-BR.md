@@ -11,10 +11,12 @@ Este repositório prova isso na fonte, em cerca de 100 linhas de Python da
 biblioteca padrão. Sem pandas, sem openpyxl, sem chave de API — um `.xlsx` é um
 zip de XML, então `zipfile` e `ElementTree` bastam.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="chart-dark.png">
-  <img alt="Dois painéis empilhados com eixo x compartilhado, Portugal 1980-2024. Em cima: área queimada em hectares, com pico de 539.921 ha em 2017. Embaixo: número de incêndios, em queda desde meados dos anos 1990. O trecho de 2023 para 2024 está destacado em vermelho nos dois: área +299%, incêndios -17%." src="chart-light.png">
-</picture>
+![Área queimada em Portugal de 1980 a 2024 desenhada em tons de brasa sobre uma imagem noturna de satélite da NASA da Península Ibérica. Um inset rotulado "o pico de 2017" mostra o incêndio de Pedrógão Grande visto da órbita. Um pequeno sparkline cinza no canto mostra o número de incêndios caindo 17% de 2023 para 2024 enquanto a área queimada subiu 299%.](card-both.png)
+
+O inset não é enfeite: é o incêndio de Pedrógão Grande às 2h48 de 19 de junho de
+2017, fotografado da órbita porque estava queimando forte o bastante para ser
+visto à noite. Esse incêndio é o pico de 2017 no gráfico. A imagem e o ponto de
+dado são o mesmo evento.
 
 ## O achado
 
@@ -50,7 +52,8 @@ compute. **A definição da métrica é a análise.** Todo o resto é aritmétic
 |---|---|
 | [`fetch_effis.py`](fetch_effis.py) | Baixa o workbook oficial do EFFIS e converte as duas planilhas em CSV. Só stdlib. |
 | [`analyze.py`](analyze.py) | Correlação por país, mais todos os anos em que as duas métricas foram em direções opostas. |
-| [`make_chart.py`](make_chart.py) | Gera o gráfico em HTML e exporta os PNGs via Chrome headless. |
+| [`make_chart.py`](make_chart.py) | Gera o gráfico analítico em HTML e exporta os PNGs via Chrome headless. |
+| [`make_social_card.py`](make_social_card.py) | Gera o card editorial acima. `both` / `inset` / `ground`. |
 | [`chart.html`](chart.html) | Versão interativa — hover, claro/escuro e tabela com os 45 anos. |
 | [`sample_output/analysis.txt`](sample_output/analysis.txt) | Saída de uma execução real, pra ler os resultados sem rodar nada. |
 | [`data/`](data/) | Os dois CSVs já processados. |
@@ -64,13 +67,31 @@ python3 fetch_effis.py && python3 analyze.py && python3 make_chart.py
 Python 3.9+. Sem dependências. Chrome ou Chromium é opcional — serve só pra
 exportar os PNGs, e o gráfico em HTML é escrito de qualquer forma.
 
-## Sobre o gráfico
+## Sobre os gráficos
 
-Área queimada e número de incêndios são grandezas de escalas diferentes, então
+São dois, e fazem trabalhos diferentes.
+
+O **gráfico analítico** — [`chart.html`](chart.html) e os PNGs abaixo — é o que se
+lê. Área queimada e número de incêndios são grandezas de escalas diferentes, então
 ficam em dois painéis empilhados com eixo x compartilhado, e não num gráfico de
-eixo duplo. Isso é deliberado: dois eixos y no mesmo plot inventam uma
-correlação que o dado não tem — que é exatamente o erro de que este repositório
-trata.
+eixo duplo. Isso é deliberado: dois eixos y no mesmo plot inventam uma correlação
+que o dado não tem — que é exatamente o erro de que este repositório trata.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="chart-dark.png">
+  <img alt="Dois painéis empilhados com eixo x compartilhado, Portugal 1980-2024. Em cima: área queimada em hectares, com pico de 539.921 ha em 2017. Embaixo: número de incêndios, em queda desde meados dos anos 1990. O trecho de 2023 para 2024 está destacado em vermelho nos dois: área +299%, incêndios -17%." src="chart-light.png">
+</picture>
+
+O **card editorial** no topo deste README defende uma tese em vez de mostrar as
+duas séries com peso igual: a área queimada é desenhada em brasa e a contagem de
+incêndios é rebaixada a um sparkline cinza. É o argumento virando decisão de
+design — a métrica que todo mundo cita é a única sem cor.
+
+Rode `python3 make_social_card.py both` para essa versão, `inset` para fundo
+procedural só com o inset de satélite, ou `ground` para a imagem de satélite em
+tela cheia. O duotone de brasa é aplicado na renderização por um filtro SVG; a
+banda day-night do VIIRS é radiância monocromática, e a cor não carrega
+significado de medição. Veja o [`NOTICE`](NOTICE).
 
 ## Os dados
 
@@ -95,4 +116,8 @@ Dois limites que vale conhecer antes de citar qualquer coisa daqui:
 
 ## Licença
 
-Código: [MIT](LICENSE). Dados: CC BY 4.0, © União Europeia, veja [`NOTICE`](NOTICE).
+Código: [MIT](LICENSE). Dados: CC BY 4.0, © União Europeia. Imagem de satélite:
+NASA Earth Observatory, livre para reuso com atribuição — *NASA Earth Observatory
+image by Jesse Allen, using VIIRS day-night band data from the Suomi National
+Polar-orbiting Partnership.* A atribuição completa e a lista de alterações feitas
+nas duas fontes estão no [`NOTICE`](NOTICE).

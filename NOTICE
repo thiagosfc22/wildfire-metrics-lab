@@ -32,3 +32,37 @@ in the burnt-area figures.
 The analysis, chart and all code in this repository are the author's own and are
 not endorsed by or affiliated with EFFIS, Copernicus, the JRC or the European
 Commission.
+
+
+IMAGE ATTRIBUTION
+=================
+
+The satellite imagery in assets/ is from NASA Earth Observatory and is free to
+reuse with attribution.
+
+  Credit:    NASA Earth Observatory image by Jesse Allen, using VIIRS day-night
+             band data from the Suomi National Polar-orbiting Partnership.
+  Story:     Kathryn Hansen
+  Page:      https://science.nasa.gov/earth/earth-observatory/wildfires-light-up-portugal-90427
+  Source:    portugal_vir_2017170_lrg.jpg (4000 x 4000)
+             https://eoimages.gsfc.nasa.gov/images/imagerecords/90000/90427/portugal_vir_2017170_lrg.jpg
+  Retrieved: 2026-07-28
+  Shows:     The Pedrógão Grande wildfire in central Portugal at 02:48 local
+             time on 19 June 2017, burning brightly enough to be detected at
+             night from orbit. This is the same fire that is the 2017 peak in
+             the burnt-area series.
+
+Changes made to the source image:
+
+  1. Two regions were cropped from the full 4000 x 4000 satellite swath, using
+     macOS `sips`. The fire is at pixel (1985, 1995) in the original.
+       assets/nasa_ground.jpg     - 1600 x 900 at offset (1500, 1700), Iberia
+       assets/nasa_fire_tight.jpg -  440 x 440 at offset (1785, 1770), the fire
+  2. No pixel values were altered. The card applies an ember duotone at render
+     time via an SVG filter. The VIIRS day-night band is a monochrome radiance
+     product; the colour is an explicit design treatment for the social card and
+     carries no measurement meaning. The analytical chart (make_chart.py) uses no
+     imagery at all.
+
+NASA does not endorse this project. The NASA insignia, logotype and seal are not
+used here and may not be used to imply endorsement.
